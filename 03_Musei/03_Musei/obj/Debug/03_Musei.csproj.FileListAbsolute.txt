@@ -1,0 +1,7 @@
+D:\Scuola\5_INF\INFO\info-playground-michele-ghisolfi-1\03_Musei\03_Musei\bin\Debug\03_Musei.exe.config
+D:\Scuola\5_INF\INFO\info-playground-michele-ghisolfi-1\03_Musei\03_Musei\bin\Debug\03_Musei.exe
+D:\Scuola\5_INF\INFO\info-playground-michele-ghisolfi-1\03_Musei\03_Musei\bin\Debug\03_Musei.pdb
+D:\Scuola\5_INF\INFO\info-playground-michele-ghisolfi-1\03_Musei\03_Musei\obj\Debug\03_Musei.csproj.AssemblyReference.cache
+D:\Scuola\5_INF\INFO\info-playground-michele-ghisolfi-1\03_Musei\03_Musei\obj\Debug\03_Musei.csproj.CoreCompileInputs.cache
+D:\Scuola\5_INF\INFO\info-playground-michele-ghisolfi-1\03_Musei\03_Musei\obj\Debug\03_Musei.exe
+D:\Scuola\5_INF\INFO\info-playground-michele-ghisolfi-1\03_Musei\03_Musei\obj\Debug\03_Musei.pdb
