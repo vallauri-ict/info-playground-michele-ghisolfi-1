@@ -14,15 +14,28 @@ WHERE m.Citta='Londra'
 AND NOT EXISTS (SELECT * FROM Opere o 
 				WHERE o.NomeArtista='Tiziano' 
 				AND o.NomeMuseo=m.NomeMuseo) 
+-- Oppure
+SELECT *
+FROM Musei m
+WHERE m.Citta='Londra'
+AND 'Tiziano' NOT IN (SELECT o.NomeArtista
+					FROM Opere o
+					WHERE o.NomeMuseo=m.NomeMuseo)
 
-/* Il nome dei musei di Londra che hanno solo opere di Tiziano */
+/* 10. Il nome dei musei di Londra che hanno solo opere di Tiziano */
 SELECT m.NomeMuseo 
 FROM Musei m
 WHERE m.Citta='Londra'
-AND EXISTS (SELECT * FROM Opere o 
-				WHERE o.NomeArtista='Tiziano' 
+AND NOT EXISTS (SELECT * FROM Opere o 
+				WHERE o.NomeArtista<>'Tiziano' 
 				AND o.NomeMuseo=m.NomeMuseo) 
-
+--oppuure
+SELECT *
+FROM Musei m
+WHERE m.Citta='Londra'
+AND 'Tiziano' = ALL (SELECT o.NomeArtista
+				FROM Opere o
+				WHERE o.NomeMuseo=m.NomeMuseo)
 
 /* 11. Per ciascun artista, il nome dell'artista ed il numero di sue opere conservate alla “Galleria
 degli Uffizi” */
@@ -39,16 +52,27 @@ WHERE o.NomeArtista=a.NomeArtista
 AND a.Nazionalita='IT'
 GROUP BY o.NomeMuseo
 HAVING COUNT(*)>1
+-- oppure
+SELECT m.NomeMuseo
+FROM Musei m
+WHERE 2<=(SELECT count(*)
+		FROM Opere o, Artisti a
+		WHERE o.NomeArtista=a.NomeArtista
+		AND a.Nazionalita='IT'
+		AND m.NomeMuseo=o.NomeMuseo)
+
 
 
 
 /* 13- Per le opere di artisti italiani che non hanno personaggi. il titolo dell’opera ed il nome
 dell'artista */
 SELECT a.NomeArtista, o.Titolo
-FROM Artisti a, Personaggi p, Opere o
+FROM Artisti a, Opere o
 WHERE a.Nazionalita='IT'
-AND p.Personaggio=NULL
-AND p.Codice=o.Codice AND a.NomeArtista=o.NomeArtista
+AND a.NomeArtista=o.NomeArtista
+AND NOT EXISTS (SELECT *
+				FROM Personaggi p
+				WHERE p.Codice=o.Codice)
 
 /* 14- Il nome dei musei di Londra che non conservano opere di artisti italiani, eccettuato Tiziano */
 SELECT *
@@ -68,3 +92,10 @@ FROM Artisti a, Opere o
 WHERE a.NomeArtista=o.NomeArtista
 GROUP BY o.NomeMuseo,a.Nazionalita
 ORDER BY o.NomeMuseo
+
+
+
+/* */
+UPDATE Artisti
+SET Nazionalita='ES'
+WHERE NomeArtista='Picasso'
