@@ -1,1 +1,1 @@
-﻿DROP TABLE IF EXISTS AutoCoinvolte, Proprietari, Assicurazioni, Autom, Sinistro;
+﻿DROP TABLE IF EXISTS AutoCoinvolte, Proprietari, Assicurazioni, Autom, Sinistri;
